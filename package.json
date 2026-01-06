@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npx vite build",
     "lint": "eslint .",
     "start": "vite --host 0.0.0.0 --port 8080"
   },
