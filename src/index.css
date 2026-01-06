@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Telugu:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Lato:100,300,400");
+@import url("https://fonts.googleapis.com/css?family=Roboto:100");
+
+:root {
+  --color-bg-dark: #000;
+  --color-blue-dark: #11394a;
+  --color-blue-mid: #206d8e;
+  --color-blue-bright: #0082d5;
+  --color-blue-shadow: #156090;
+  --color-cyan: #65bcfd;
+  --color-cyan-neon: #00f0e8;
+  --color-white: #ffffff;
+  --color-text-main: #ffffff;
+
+  --font-caviar: "CaviarDreams", sans-serif;
+  --font-caviar-bold: "CaviarDreams_Bold", sans-serif;
+  --font-roadrage: "RoadRage", fantasy;
+  --font-hawthorne: "hawthorne_vintageregular", serif;
+  --font-lato: "Lato", sans-serif;
+}
+
+/* Font Faces */
+@font-face {
+  font-family: "CaviarDreams";
+  src: url("/fonts/CaviarDreams.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "CaviarDreams_Bold";
+  src: url("/fonts/CaviarDreams_Bold.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "RoadRage";
+  src: url("/fonts/Road_Rage.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "hawthorne_vintageregular";
+  src: url("/fonts/hawthorne_vintage-webfont.woff2") format("woff2"),
+    url("/fonts/hawthorne_vintage-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg-dark);
+  font-family: var(--font-caviar);
+  color: var(--color-text-main);
+  overflow-x: hidden;
+  /* fallback background */
+  background: top fixed no-repeat url('/img/bodybg.jpg');
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 80px;
+    /* Space for bottom nav */
+  }
+}
+
+/* Reset / Utils */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: bold;
+  /* Made all headers bold */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  /* Added drop shadow */
+}
+
+/* Specific Header 2 Style for Sections */
+.header2 {
+  font-size: 4rem;
+  /* Larger */
+  font-weight: 900;
+  /* Bolder */
+  text-transform: uppercase;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
+  letter-spacing: 2px;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-blue-mid);
+  border-radius: 5px;
+}
+
+/* --- Masked Buttons (Ported from buttons.css) --- */
+.masked-btn-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-family: var(--font-caviar-bold);
+  font-weight: 300;
+  font-size: 2rem;
+  transition: 0.5s;
+  letter-spacing: 1px;
+  border-radius: 8px 8px 0px 0;
+  padding: 0;
+  background: transparent;
+}
+
+/* Active State for Portfolio Tabs */
+.masked-btn-container.active {
+  border: 5px solid #ffffff;
+  box-shadow:
+    0 0 20px 10px #fff,
+    /* inner white */
+    0 0 600px 20px #f0f,
+    /* middle magenta */
+    0 0 90px 30px #0ff;
+  /* outer cyan */
+}
+
+/* Button 1 Style (Nature Sprite) */
+.masked-btn {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-caviar-bold);
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  background: hsl(194, 100%, 50%);
+  /* Default Blue */
+
+  -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+  mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+  -webkit-mask-size: 2300% 100%;
+  mask-size: 2300% 100%;
+
+  border: none;
+  color: #002e33;
+  cursor: pointer;
+
+  /* Initial state: reversed animation or static */
+  -webkit-animation: maskAniBack 0.7s steps(22) forwards;
+  animation: maskAniBack 0.7s steps(22) forwards;
+}
+
+.masked-btn:hover {
+  -webkit-animation: maskAniForward 0.7s steps(22) forwards;
+  animation: maskAniForward 0.7s steps(22) forwards;
+}
+
+/* Color Variants */
+.masked-btn.blue {
+  background: hsl(194, 100%, 50%);
+  color: #002e33;
+}
+
+.masked-btn.orange {
+  background: hsl(25, 100%, 50%);
+  color: #2c1f01;
+}
+
+.masked-btn.green {
+  background: hsl(108, 100%, 50%);
+  color: #0b2c01;
+}
+
+/* Animation Keyframes */
+@keyframes maskAniForward {
+  from {
+    mask-position: 0 0;
+    -webkit-mask-position: 0 0;
+  }
+
+  to {
+    mask-position: 100% 0;
+    -webkit-mask-position: 100% 0;
+  }
+}
+
+@-webkit-keyframes maskAniForward {
+  from {
+    -webkit-mask-position: 0 0;
+  }
+
+  to {
+    -webkit-mask-position: 100% 0;
+  }
+}
+
+@keyframes maskAniBack {
+  from {
+    mask-position: 100% 0;
+    -webkit-mask-position: 100% 0;
+  }
+
+  to {
+    mask-position: 0 0;
+    -webkit-mask-position: 0 0;
+  }
+}
+
+@-webkit-keyframes maskAniBack {
+  from {
+    -webkit-mask-position: 100% 0;
+  }
+
+  to {
+    -webkit-mask-position: 0 0;
+  }
+}
+
+@media (max-width: 900px) {
+
+  .masked-btn-container,
+  .masked-btn {
+    font-size: 1rem;
+    height: 60px;
+  }
+}
+
+/* --- Animated Gradient Glow for Portfolio (Box Shadow) --- */
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 15px -2px #00f0e8, 0 0 30px -5px #8a1fad;
+    border: 1px solid #00f0e8;
+  }
+
+  33% {
+    box-shadow: 0 0 15px -2px #8a1fad, 0 0 30px -5px #00ff6a;
+    border: 1px solid #8a1fad;
+  }
+
+  66% {
+    box-shadow: 0 0 15px -2px #00ff6a, 0 0 30px -5px #00f0e8;
+    border: 1px solid #00ff6a;
+  }
+
+  100% {
+    box-shadow: 0 0 15px -2px #00f0e8, 0 0 30px -5px #8a1fad;
+    border: 1px solid #00f0e8;
+  }
+}
+
+/* --- Pushable 3D Button Style --- */
+.pushable {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.pushable-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.pushable-edge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(to left,
+      var(--color-blue-dark) 0%,
+      #154d66 8%,
+      #154d66 92%,
+      var(--color-blue-dark) 100%);
+}
+
+.pushable-front {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: var(--color-blue-mid);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+  font-family: var(--font-caviar-bold);
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .pushable-front {
+    font-size: 1.1rem;
+    /* Kept consistent */
+    padding: 10px 25px;
+  }
+}
+
+.pushable:hover {
+  filter: brightness(110%);
+}
+
+.pushable:hover .pushable-front {
+  transform: translateY(-6px);
+  transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.pushable:active .pushable-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.pushable:hover .pushable-shadow {
+  transform: translateY(4px);
+  transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.pushable:active .pushable-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+.customCursor div {
+  position: fixed;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 10px rgb(227, 117, 255);
+  border: 2px solid rgba(255, 0, 123, 1);
+  border-radius: 50%;
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+  animation: cursorPulse 3s infinite ease-in-out;
+}
+
+.customCursor div:first-child {
+  background-color: rgb(15, 13, 14) !important;
+  box-shadow: 0 0 20px rgb(255, 255, 255) !important;
+  border-radius: 10% 70% 50% 70%;
+  width: 4em !important;
+  height: 4em !important;
+}
+
+
+@keyframes cursorPulse {
+  0% {
+    border: 3px solid rgb(208, 0, 255);
+    background-color: rgba(166, 0, 255, 0.69);
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  50% {
+    border: 6px solid rgba(0, 145, 255, 1);
+    background-color: rgba(0, 145, 255, 1);
+    width: .5em;
+    height: .5em;
+  }
+
+  100% {
+    border: 3px solid rgb(0, 255, 51);
+    background-color: rgb(0, 128, 26);
+    width: 1.5em;
+    height: 1.5em;
+  }
+}
+
+@media (pointer:none),
+(pointer:coarse) {
+  .customCursor {
+    animation: none !important;
+    display: none !important;
+    /* animation: cursorPulseMobile 5s 1 ease-in-out; */
+  }
+}
+
+@keyframes cursorPulseMobile {
+  0% {
+    border: 3px solid rgb(208, 0, 255);
+    background-color: rgba(166, 0, 255, 0.69);
+    width: 1.5em;
+    height: 1.5em;
+    filter: blur(0) !important;
+    opacity: 1 !important;
+  }
+
+  50% {
+    border: 6px solid rgba(0, 145, 255, 1);
+    background-color: rgba(0, 145, 255, 1);
+    width: .5em;
+    height: .5em;
+    filter: blur(5px) !important;
+    opacity: 0.5 !important;
+  }
+
+  100% {
+    border: 3px solid rgb(0, 255, 51);
+    background-color: rgb(0, 128, 26);
+    width: 1.5em;
+    height: 1.5em;
+    filter: blur(20px) !important;
+    opacity: 0 !important;
+  }
+}
