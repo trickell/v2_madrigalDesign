@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "npx vite build",
     "lint": "eslint .",
-    "start": "serve -s dist tcp://0.0.0.0:8080"
+    "start": "serve -s dist --listen 8080"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
