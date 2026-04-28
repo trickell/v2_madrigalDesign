@@ -56,7 +56,7 @@ body {
   color: var(--color-text-main);
   overflow-x: hidden;
   /* fallback background */
-  background: top fixed no-repeat url('/img/bodybg.jpg');
+  /* background: top fixed no-repeat url('/img/bodybg.jpg'); */
   cursor: none;
 }
 
